@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component , Fragment } from 'react';
+import Header from './components/Header';
 
 class App extends Component {
   render() {
     return (
-     <h1>Clima React</h1>
+     <Fragment>
+       <Header
+          titulo="Clima React App"
+       />
+     </Fragment>
     );
   }
 }
