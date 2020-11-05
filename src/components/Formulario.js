@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 
 
-const Formulario = () => {
+const Formulario = ({ busqueda , setBusqueda , setConsultar }) => {
 
-    // state del formulario
-
-    const [busqueda, setBusqueda] = useState({
-        ciudad: '',
-        pais: ''
-    });
+    
 
     const [Error, setError] = useState(false);
     // extraer ciudad y pais
 
     const { ciudad, pais } = busqueda;
-
     // funcion que coloca los elementos en el state
 
     const handleChange = e => {
@@ -35,13 +29,14 @@ const Formulario = () => {
 
         // validar
 
-        if (ciudad.trim() === '' || pais.trim()) {
+        if (ciudad.trim() === '' || pais.trim() === '') {
             setError(true);
             return;
         }
 
-
-
+        setError(false);
+        setConsultar(true);
+        
         //pasarlo al componente principal
         
     }
@@ -51,7 +46,11 @@ const Formulario = () => {
         <form
             onSubmit={handleSubmit}
         >
-            {Error ? <p className="red darken-4 error">Todos los campos son obligatorios</p>:null}
+            {Error
+                ? <p className="red darken-4 error">Todos los campos son obligatorios</p>
+                : null
+            }
+
             <div className="input-field col s12">
                 <input
                     type="text"
